@@ -17,12 +17,6 @@ async def main():
     transformer = ArticleTransformer()
     storage = MarkdownStorage("data/articles")
 
-    # Create fetchers
-    # fetchers = [
-    #     HackerNewsFetcher(transformer, storage),
-    #     GitHubTrendingFetcher(transformer, storage),
-    # ]
-
     config_sources = ['hackernews', 'github']
     fetchers = [
         FetcherFactory.create(source, transformer, storage)
