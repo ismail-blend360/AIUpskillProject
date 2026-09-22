@@ -1,0 +1,24 @@
+# AI Upskill Project — pinned dependencies
+# Python 3.11+ required
+
+# Async HTTP + RSS (Milestone 1)
+aiohttp==3.11.10
+feedparser==6.0.11
+
+# LLM provider abstraction (Milestone 3 onwards)
+# LiteLLM lets us call Anthropic, OpenAI, Gemini, etc. behind a single API.
+litellm==1.55.0
+
+# Model Context Protocol (Milestone 4)
+mcp==1.1.2
+
+# Configuration
+python-dotenv==1.0.1
+
+# Testing (every milestone)
+pytest==8.3.4
+pytest-asyncio==0.25.0
+pytest-cov==6.0.0
+
+# Linting + formatting (replaces black + isort + pylint with one tool)
+ruff==0.8.4
