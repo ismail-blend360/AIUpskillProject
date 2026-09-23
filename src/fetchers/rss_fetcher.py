@@ -1,8 +1,10 @@
 # src/fetchers/rss_fetcher.py
 
-from src.fetchers.base_fetcher import BaseFetcher
-import feedparser
 from typing import List
+
+import feedparser
+
+from src.fetchers.base_fetcher import BaseFetcher
 from src.models.article import Article
 
 
@@ -21,6 +23,7 @@ class RSSFetcher(BaseFetcher):
     def get_source_name(self) -> str:
         """Return source name."""
         return "rss"
+
 
 # """Fetch articles from RSS feeds."""
 

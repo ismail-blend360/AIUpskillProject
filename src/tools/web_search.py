@@ -1,5 +1,6 @@
 """Simple web search tool (mock for now)."""
-from typing import Dict, Any, List
+
+from typing import Any, Dict
 
 
 def web_search(query: str, num_results: int = 3) -> Dict[str, Any]:
@@ -21,7 +22,7 @@ def web_search(query: str, num_results: int = 3) -> Dict[str, Any]:
         {
             "title": f"Result for: {query}",
             "url": f"https://example.com/search?q={query}",
-            "snippet": f"This is a mock search result for '{query}'"
+            "snippet": f"This is a mock search result for '{query}'",
         }
     ] * num_results
 
@@ -29,7 +30,7 @@ def web_search(query: str, num_results: int = 3) -> Dict[str, Any]:
         "success": True,
         "query": query,
         "num_results": num_results,
-        "results": mock_results
+        "results": mock_results,
     }
 
 
@@ -42,19 +43,16 @@ WEB_SEARCH_SCHEMA = {
         "parameters": {
             "type": "object",
             "properties": {
-                "query": {
-                    "type": "string",
-                    "description": "Search query"
-                },
+                "query": {"type": "string", "description": "Search query"},
                 "num_results": {
                     "type": "integer",
                     "description": "Number of results to return (1-10)",
-                    "default": 3
-                }
+                    "default": 3,
+                },
             },
-            "required": ["query"]
-        }
-    }
+            "required": ["query"],
+        },
+    },
 }
 
 

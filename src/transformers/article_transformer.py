@@ -1,6 +1,8 @@
 """Transform raw data to Article objects."""
-from typing import List, Dict, Any
+
 from datetime import datetime
+from typing import Any, Dict, List
+
 from src.models.article import Article
 
 
@@ -24,16 +26,16 @@ class ArticleTransformer:
         articles = []
 
         for item in raw_data:
-            if not item.get('url'):
+            if not item.get("url"):
                 continue
 
             article = Article(
-                title=item.get('title', ''),
-                url=item['url'],
-                published_at=datetime.fromtimestamp(item.get('time', 0)),
-                source='hackernews',
-                summary=item.get('text', '')[:200] if item.get('text') else '',
-                score=item.get('score', 0)
+                title=item.get("title", ""),
+                url=item["url"],
+                published_at=datetime.fromtimestamp(item.get("time", 0)),
+                source="hackernews",
+                summary=item.get("text", "")[:200] if item.get("text") else "",
+                score=item.get("score", 0),
             )
             articles.append(article)
 
@@ -53,11 +55,11 @@ class ArticleTransformer:
 
         for entry in entries:
             article = Article(
-                title=entry.get('title', ''),
-                url=entry.get('link', ''),
-                published_at=self._parse_date(entry.get('published')),
-                source='rss',
-                summary=entry.get('summary', '')[:200]
+                title=entry.get("title", ""),
+                url=entry.get("link", ""),
+                published_at=self._parse_date(entry.get("published")),
+                source="rss",
+                summary=entry.get("summary", "")[:200],
             )
             articles.append(article)
 
@@ -69,6 +71,7 @@ class ArticleTransformer:
         # You can copy from your existing code
         try:
             from dateutil import parser
+
             return parser.parse(date_str)
         except:
             return datetime.now()

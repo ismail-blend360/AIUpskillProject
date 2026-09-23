@@ -1,11 +1,12 @@
 """Base class for AI agents."""
-import os
+
 import json
-from typing import Callable, Dict, List, Optional
+import os
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 from litellm import completion
+
 
 class BaseAgent(ABC):
     """
@@ -15,6 +16,7 @@ class BaseAgent(ABC):
     - execute() orchestrates the workflow
     - Subclasses implement specific steps
     """
+
     def __init__(
         self,
         model: Optional[str] = None,
@@ -67,17 +69,17 @@ class BaseAgent(ABC):
     @abstractmethod
     async def _load_context(self, input_path: str) -> Dict[str, Any]:
         """Load input context. Subclasses implement how to read their input."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     async def _process(self, context: Dict[str, Any]) -> Dict[str, Any]:
         """Process context with LLM. Subclasses implement their specific logic."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     async def _save_result(self, result: Dict[str, Any], output_path: str):
         """Save processing result. Subclasses implement how to save their output."""
-        pass
+        raise NotImplementedError
 
     def _call_llm(self, prompt: str, system: Optional[str] = None) -> str:
         """
@@ -152,11 +154,13 @@ class BaseAgent(ABC):
                 result = self.tool_functions[name](**args)
                 print(f"   📊 Tool result: {result}")
 
-                messages.append({
-                    "role": "tool",
-                    "tool_call_id": tool_call.id,
-                    "name": name,
-                    "content": json.dumps(result),
-                })
+                messages.append(
+                    {
+                        "role": "tool",
+                        "tool_call_id": tool_call.id,
+                        "name": name,
+                        "content": json.dumps(result),
+                    }
+                )
 
         raise RuntimeError("Tool-call loop exceeded 10 rounds — model is stuck.")

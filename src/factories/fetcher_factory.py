@@ -1,9 +1,11 @@
 """Factory for creating fetchers."""
-from typing import Dict, Type, List
+
+from typing import Dict, List, Type
+
 from src.fetchers.base_fetcher import BaseFetcher
+from src.fetchers.github_trending_fetcher import GitHubTrendingFetcher
 from src.fetchers.hackernews_fetcher import HackerNewsFetcher
 from src.fetchers.rss_fetcher import RSSFetcher
-from src.fetchers.github_trending_fetcher import GitHubTrendingFetcher
 
 
 class FetcherFactory:
@@ -15,18 +17,12 @@ class FetcherFactory:
 
     # Registry of available fetchers
     _fetchers: Dict[str, Type[BaseFetcher]] = {
-        'hackernews': HackerNewsFetcher,
-        'github': GitHubTrendingFetcher,
+        "hackernews": HackerNewsFetcher,
+        "github": GitHubTrendingFetcher,
     }
 
     @classmethod
-    def create(
-        cls,
-        source_type: str,
-        transformer,
-        storage,
-        **kwargs
-    ) -> BaseFetcher:
+    def create(cls, source_type: str, transformer, storage, **kwargs) -> BaseFetcher:
         """
         Create fetcher by type.
 
@@ -48,8 +44,8 @@ class FetcherFactory:
         fetcher_class = cls._fetchers[source_type]
 
         # Special case for RSS which needs URL
-        if source_type == 'rss':
-            feed_url = kwargs.get('feed_url')
+        if source_type == "rss":
+            feed_url = kwargs.get("feed_url")
             if not feed_url:
                 raise ValueError("RSS fetcher requires feed_url")
             return RSSFetcher(feed_url, transformer, storage)

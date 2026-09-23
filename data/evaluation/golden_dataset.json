@@ -1,0 +1,87 @@
+{
+  "description": "Golden dataset for evaluating news filtering",
+  "version": "1.0",
+  "created": "2026-01-15",
+  "test_cases": [
+    {
+      "id": 1,
+      "title": "GPT-4 Released by OpenAI",
+      "summary": "OpenAI announces GPT-4, their most advanced language model with improved reasoning and multimodal capabilities.",
+      "expected_relevant": true,
+      "expected_score": 10,
+      "reason": "Core AI/ML development"
+    },
+    {
+      "id": 2,
+      "title": "New JavaScript Framework Released",
+      "summary": "Vue.js 4 brings improved performance and better TypeScript support.",
+      "expected_relevant": false,
+      "expected_score": 1,
+      "reason": "Web development, not AI"
+    },
+    {
+      "id": 3,
+      "title": "Machine Learning in Healthcare Breakthrough",
+      "summary": "Researchers use deep learning to predict disease outcomes with 95% accuracy.",
+      "expected_relevant": true,
+      "expected_score": 9,
+      "reason": "ML application in important domain"
+    },
+    {
+      "id": 4,
+      "title": "Docker 25 Released",
+      "summary": "Container platform adds new features for developers.",
+      "expected_relevant": false,
+      "expected_score": 2,
+      "reason": "DevOps, not directly AI"
+    },
+    {
+      "id": 5,
+      "title": "Stable Diffusion 3.0 Improves Image Generation",
+      "summary": "New version of text-to-image model produces more realistic results.",
+      "expected_relevant": true,
+      "expected_score": 10,
+      "reason": "Core AI/generative models"
+    },
+    {
+      "id": 6,
+      "title": "PostgreSQL 16 Features",
+      "summary": "Database adds JSON improvements and performance enhancements.",
+      "expected_relevant": false,
+      "expected_score": 1,
+      "reason": "Database, not AI"
+    },
+    {
+      "id": 7,
+      "title": "Neural Network Optimizes Traffic Flow",
+      "summary": "City implements AI system to reduce congestion by 30%.",
+      "expected_relevant": true,
+      "expected_score": 8,
+      "reason": "AI application in real-world problem"
+    },
+    {
+      "id": 8,
+      "title": "Recipe for Perfect Pizza Dough",
+      "summary": "Chef shares secret technique for crispy crust.",
+      "expected_relevant": false,
+      "expected_score": 0,
+      "reason": "Food/cooking, not AI"
+    },
+    {
+      "id": 9,
+      "title": "Transformer Architecture Explained",
+      "summary": "Deep dive into attention mechanisms and self-attention in modern NLP models.",
+      "expected_relevant": true,
+      "expected_score": 9,
+      "reason": "Core AI/ML architecture"
+    },
+    {
+      "id": 10,
+      "title": "AI Ethics Guidelines Published",
+      "summary": "Organization releases framework for responsible AI development.",
+      "expected_relevant": true,
+      "expected_score": 7,
+      "reason": "AI governance and ethics"
+    }
+  ]
+}

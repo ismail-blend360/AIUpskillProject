@@ -1,11 +1,12 @@
 import asyncio
+
 import pytest
 
-from src.transformers.article_transformer import ArticleTransformer
-from src.storage.markdown_storage import MarkdownStorage
 from src.factories.fetcher_factory import FetcherFactory
 from src.fetchers.hackernews_fetcher import HackerNewsFetcher
+from src.storage.markdown_storage import MarkdownStorage
 from src.strategies.rate_limit_strategy import SemaphoreStrategy
+from src.transformers.article_transformer import ArticleTransformer
 
 
 def test_factory():
@@ -14,17 +15,18 @@ def test_factory():
     storage = MarkdownStorage()
 
     # Create via factory
-    fetcher = FetcherFactory.create('hackernews', transformer, storage)
+    fetcher = FetcherFactory.create("hackernews", transformer, storage)
 
     assert isinstance(fetcher, HackerNewsFetcher)
-    assert fetcher.get_source_name() == 'hackernews'
+    assert fetcher.get_source_name() == "hackernews"
 
     # List available types
     types = FetcherFactory.get_available_types()
-    assert 'hackernews' in types
-    assert 'github' in types
+    assert "hackernews" in types
+    assert "github" in types
 
     print("✅ Factory works!")
+
 
 @pytest.mark.asyncio
 async def test_rate_limiting():

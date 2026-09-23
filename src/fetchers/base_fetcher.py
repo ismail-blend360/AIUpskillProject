@@ -1,6 +1,8 @@
 """Base fetcher interface."""
+
 from abc import ABC, abstractmethod
 from typing import List
+
 from src.models.article import Article
 
 
@@ -34,7 +36,7 @@ class BaseFetcher(ABC):
         Returns:
             List of Article objects
         """
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def get_source_name(self) -> str:
@@ -44,7 +46,7 @@ class BaseFetcher(ABC):
         Returns:
             Source name (e.g., 'hackernews', 'rss', 'github')
         """
-        pass
+        raise NotImplementedError
 
     # Common methods (same for all fetchers)
 

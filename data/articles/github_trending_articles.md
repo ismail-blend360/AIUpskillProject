@@ -1,110 +1,74 @@
-# Articles - 2026-09-22 09:54
-
-## BuilderIO/agent-native
-                **Source:** github_trending
-                **URL:** https://github.com/BuilderIO/agent-native
-                **Published:** 2026-09-22 09:54:27.975709
-                **Score:** 0
-                A framework for building agentic apps (⭐ 607 stars today)
-                
----
-
-## trycua/cua
-                **Source:** github_trending
-                **URL:** https://github.com/trycua/cua
-                **Published:** 2026-09-22 09:54:27.975709
-                **Score:** 0
-                Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation. (⭐ 609 stars today)
-                
----
-
-## Open-Dev-Society/OpenStock
-                **Source:** github_trending
-                **URL:** https://github.com/Open-Dev-Society/OpenStock
-                **Published:** 2026-09-22 09:54:27.975709
-                **Score:** 0
-                OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free. (⭐ 844 stars today)
-                
----
-
-## akitaonrails/ai-memory
-                **Source:** github_trending
-                **URL:** https://github.com/akitaonrails/ai-memory
-                **Published:** 2026-09-22 09:54:27.975709
-                **Score:** 0
-                Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors (⭐ 167 stars today)
-                
----
-
-## coder/coder
-                **Source:** github_trending
-                **URL:** https://github.com/coder/coder
-                **Published:** 2026-09-22 09:54:27.975709
-                **Score:** 0
-                Secure environments for developers and their agents (⭐ 460 stars today)
-                
----
+# Articles - 2026-09-23 13:25
 
 ## anthropics/financial-services
                 **Source:** github_trending
                 **URL:** https://github.com/anthropics/financial-services
-                **Published:** 2026-09-22 09:54:27.982276
+                **Published:** 2026-09-23 13:25:16.476787
                 **Score:** 0
-                 (⭐ 424 stars today)
+                 (⭐ 438 stars today)
                 
 ---
 
-## cloudflare/quiche
+## agent-substrate/substrate
                 **Source:** github_trending
-                **URL:** https://github.com/cloudflare/quiche
-                **Published:** 2026-09-22 09:54:27.982276
+                **URL:** https://github.com/agent-substrate/substrate
+                **Published:** 2026-09-23 13:25:16.476787
                 **Score:** 0
-                🥧 Savoury implementation of the QUIC transport protocol and HTTP/3 (⭐ 32 stars today)
+                Agent Substrate: the core system (⭐ 245 stars today)
+                
+---
+
+## dream-num/univer
+                **Source:** github_trending
+                **URL:** https://github.com/dream-num/univer
+                **Published:** 2026-09-23 13:25:16.476787
+                **Score:** 0
+                The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime. (⭐ 255 stars today)
+                
+---
+
+## davila7/claude-code-templates
+                **Source:** github_trending
+                **URL:** https://github.com/davila7/claude-code-templates
+                **Published:** 2026-09-23 13:25:16.476787
+                **Score:** 0
+                CLI tool for configuring and monitoring Claude Code (⭐ 64 stars today)
+                
+---
+
+## google/ax
+                **Source:** github_trending
+                **URL:** https://github.com/google/ax
+                **Published:** 2026-09-23 13:25:16.476787
+                **Score:** 0
+                Google's open agentic orchestration runtime (⭐ 2,305 stars today)
                 
 ---
 
 ## mvt-project/mvt
                 **Source:** github_trending
                 **URL:** https://github.com/mvt-project/mvt
-                **Published:** 2026-09-22 09:54:27.982276
+                **Published:** 2026-09-23 13:25:16.476787
                 **Score:** 0
-                MVT (Mobile Verification Toolkit) helps with conducting forensics of mobile devices in order to find signs of a potential compromise. (⭐ 169 stars today)
+                MVT (Mobile Verification Toolkit) helps with conducting forensics of mobile devices in order to find signs of a potential compromise. (⭐ 441 stars today)
                 
 ---
 
-## zhouxiaoka/autoclip
+## superdesigndev/treg
                 **Source:** github_trending
-                **URL:** https://github.com/zhouxiaoka/autoclip
-                **Published:** 2026-09-22 09:54:27.984284
+                **URL:** https://github.com/superdesigndev/treg
+                **Published:** 2026-09-23 13:25:16.476787
                 **Score:** 0
-                AutoClip : AI-powered video clipping and highlight generation · 一款智能高光提取与剪辑的二创工具 (⭐ 250 stars today)
+                OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn (⭐ 230 stars today)
                 
 ---
 
-## ruanyf/weekly
+## browser-use/video-use
                 **Source:** github_trending
-                **URL:** https://github.com/ruanyf/weekly
-                **Published:** 2026-09-22 09:54:27.984284
+                **URL:** https://github.com/browser-use/video-use
+                **Published:** 2026-09-23 13:25:16.476787
                 **Score:** 0
-                科技爱好者周刊，每周五发布 (⭐ 182 stars today)
-                
----
-
-## Crosstalk-Solutions/project-nomad
-                **Source:** github_trending
-                **URL:** https://github.com/Crosstalk-Solutions/project-nomad
-                **Published:** 2026-09-22 09:54:27.984284
-                **Score:** 0
-                Project NOMAD is an offline-first knowledge and education server. Wikipedia, thousands of books, courses, maps, and optional local AI, all running on hardware you own with no internet required. (⭐ 394 stars today)
-                
----
-
-## yynxxxxx/Codex-X
-                **Source:** github_trending
-                **URL:** https://github.com/yynxxxxx/Codex-X
-                **Published:** 2026-09-22 09:54:27.984284
-                **Score:** 0
-                OpenAI Codex 桌面端/CLI 的可视化管理工具，具有Provider/API 切换、会话同步、提示词注入、Skills/MCP 管理、TOML 配置可视化的跨平台工具。 (⭐ 50 stars today)
+                Edit videos with coding agents (⭐ 191 stars today)
                 
 ---
 

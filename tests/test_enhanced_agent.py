@@ -1,5 +1,6 @@
 # test_enhanced_agent.py
 import asyncio
+
 from src.agents.enhanced_filter_agent import EnhancedFilterAgent
 
 
@@ -9,7 +10,7 @@ async def test_tools():
 
     result = await agent.execute(
         input_path="data/articles/all_articles.md",
-        output_path="data/context/enhanced_filtered.md"
+        output_path="data/context/enhanced_filtered.md",
     )
 
     print(f"\n✅ Enhanced filtering complete!")

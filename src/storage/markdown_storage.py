@@ -1,9 +1,12 @@
 """Save articles to markdown files."""
-from typing import List
-from pathlib import Path
+
 from datetime import datetime
+from pathlib import Path
+from typing import List
+
 from src.models.article import Article
 from src.storage.base_storage import ArticleStorage
+
 
 class MarkdownStorage(ArticleStorage):
     """
@@ -33,7 +36,7 @@ class MarkdownStorage(ArticleStorage):
 
         filepath = self.base_path / filename
 
-        with open(filepath, 'w', encoding='utf-8') as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             f.write(f"# Articles - {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n")
 
             for article in articles:

@@ -1,10 +1,12 @@
 """News filter agent with tool use."""
+
 import json
-from src.agents.news_filter_agent import NewsFilterAgent
-from src.agents.base_agent import BaseAgent
-from src.tools.calculator import calculator, CALCULATOR_SCHEMA
-from src.tools.web_search import web_search, WEB_SEARCH_SCHEMA
 from typing import Dict
+
+from src.agents.news_filter_agent import NewsFilterAgent
+from src.tools.calculator import CALCULATOR_SCHEMA, calculator
+from src.tools.web_search import WEB_SEARCH_SCHEMA, web_search
+
 
 class EnhancedFilterAgent(NewsFilterAgent):
     """
@@ -52,8 +54,8 @@ class EnhancedFilterAgent(NewsFilterAgent):
 
             # Parse JSON (same as before)
             json_text = response
-            if '```json' in response:
-                json_text = response.split('```json')[1].split('```')[0]
+            if "```json" in response:
+                json_text = response.split("```json")[1].split("```")[0]
 
             judgment = json.loads(json_text.strip())
             return judgment
@@ -61,8 +63,8 @@ class EnhancedFilterAgent(NewsFilterAgent):
         except Exception as e:
             print(f"      ⚠️  Error: {e}")
             return {
-                'relevant': False,
-                'relevance_score': 0,
-                'reasoning': f'Error: {e}',
-                'key_topics': []
+                "relevant": False,
+                "relevance_score": 0,
+                "reasoning": f"Error: {e}",
+                "key_topics": [],
             }

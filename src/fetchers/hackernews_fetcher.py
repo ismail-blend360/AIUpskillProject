@@ -1,10 +1,13 @@
 # src/fetchers/hackernews_fetcher.py
 
-from src.fetchers.base_fetcher import BaseFetcher
 from typing import List
+
 import aiohttp
+
+from src.fetchers.base_fetcher import BaseFetcher
 from src.models.article import Article
 from src.strategies.rate_limit_strategy import SemaphoreStrategy
+
 
 class HackerNewsFetcher(BaseFetcher):
     """
@@ -33,7 +36,9 @@ class HackerNewsFetcher(BaseFetcher):
                 # Fetch first 30 stories
                 stories = []
                 for story_id in story_ids[:30]:
-                    item_url = f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json"
+                    item_url = (
+                        f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json"
+                    )
                     async with session.get(item_url) as response:
                         item = await response.json()
                         if item:
@@ -46,6 +51,7 @@ class HackerNewsFetcher(BaseFetcher):
     def get_source_name(self) -> str:
         """Return source name."""
         return "hackernews"
+
 
 # """Fetch top stories from HackerNews."""
 # import asyncio
@@ -196,5 +202,3 @@ class HackerNewsFetcher(BaseFetcher):
 
 # if __name__ == "__main__":
 #     asyncio.run(test_fetch())
-
-

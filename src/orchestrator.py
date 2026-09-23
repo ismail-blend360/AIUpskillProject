@@ -3,10 +3,11 @@
 import asyncio
 from typing import List
 
-from src.models.article import Article
 from src.fetchers.base_fetcher import BaseFetcher
+from src.models.article import Article
 from src.storage.markdown_storage import MarkdownStorage
 from src.transformers.article_transformer import ArticleTransformer
+
 
 class FetchOrchestrator:
     """
@@ -16,11 +17,11 @@ class FetchOrchestrator:
     """
 
     def __init__(
-                self,
-                fetchers: List[BaseFetcher],
-                storage: MarkdownStorage,
-                transformer: ArticleTransformer
-        ):
+        self,
+        fetchers: List[BaseFetcher],
+        storage: MarkdownStorage,
+        transformer: ArticleTransformer,
+    ):
         """
         Initialize with injected dependencies.
 
@@ -32,7 +33,7 @@ class FetchOrchestrator:
         self.fetchers = fetchers
         self.storage = storage
         self.transformer = transformer
-    
+
     async def fetch_all(self) -> List[Article]:
         """Fetch from all sources."""
         all_articles = []

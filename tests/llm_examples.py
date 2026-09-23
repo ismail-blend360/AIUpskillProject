@@ -1,5 +1,6 @@
 # llm_examples.py
 import os
+
 from dotenv import load_dotenv
 from litellm import completion
 
@@ -19,15 +20,20 @@ def ask(prompt: str) -> str:
 print("Example 1:", ask("Explain async/await in Python in one sentence"))
 
 # Example 2: JSON output
-print("\nExample 2:", ask("""
+print(
+    "\nExample 2:",
+    ask("""
 Given this article title: "New AI Model Released"
 Output JSON with these fields: relevant (boolean), reason (string)
 
 {"relevant": true/false, "reason": "explanation"}
-"""))
+"""),
+)
 
 # Example 3: Few-shot learning
-print("\nExample 3:", ask("""
+print(
+    "\nExample 3:",
+    ask("""
 Classify articles as AI-related or not.
 
 Examples:
@@ -37,4 +43,5 @@ Title: "Machine Learning in Healthcare" -> AI-related: Yes
 
 Now classify:
 Title: "New JavaScript Framework"
-"""))
+"""),
+)

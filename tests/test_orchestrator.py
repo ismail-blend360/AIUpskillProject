@@ -1,10 +1,12 @@
 # tests/test_orchestrator.py
 
-import pytest
-from unittest.mock import Mock, AsyncMock
-from src.orchestrator import FetchOrchestrator
-from src.models.article import Article
 from datetime import datetime
+from unittest.mock import AsyncMock, Mock
+
+import pytest
+
+from src.models.article import Article
+from src.orchestrator import FetchOrchestrator
 
 
 @pytest.mark.asyncio
@@ -16,15 +18,17 @@ async def test_orchestrator_with_mocks():
     """
     # Create mock fetcher
     mock_fetcher = Mock()
-    mock_fetcher.fetch_and_save = AsyncMock(return_value=[
-        Article(
-            title="Test",
-            url="http://test.com",
-            published_at=datetime.now(),
-            source="test",
-            summary="Test"
-        )
-    ])
+    mock_fetcher.fetch_and_save = AsyncMock(
+        return_value=[
+            Article(
+                title="Test",
+                url="http://test.com",
+                published_at=datetime.now(),
+                source="test",
+                summary="Test",
+            )
+        ]
+    )
 
     # Create mock storage
     mock_storage = Mock()
@@ -34,9 +38,7 @@ async def test_orchestrator_with_mocks():
 
     # Inject mocks into orchestrator
     orchestrator = FetchOrchestrator(
-        fetchers=[mock_fetcher],
-        storage=mock_storage,
-        transformer=mock_transformer
+        fetchers=[mock_fetcher], storage=mock_storage, transformer=mock_transformer
     )
 
     # Test
@@ -52,21 +54,33 @@ async def test_orchestrator_with_mocks():
 async def test_multiple_fetchers():
     """Test with multiple mock fetchers."""
     mock_fetcher1 = Mock()
-    mock_fetcher1.fetch_and_save = AsyncMock(return_value=[
-        Article(title="Article 1", url="http://1.com", 
-                published_at=datetime.now(), source="test", summary="Test")
-    ])
+    mock_fetcher1.fetch_and_save = AsyncMock(
+        return_value=[
+            Article(
+                title="Article 1",
+                url="http://1.com",
+                published_at=datetime.now(),
+                source="test",
+                summary="Test",
+            )
+        ]
+    )
 
     mock_fetcher2 = Mock()
-    mock_fetcher2.fetch_and_save = AsyncMock(return_value=[
-        Article(title="Article 2", url="http://2.com",
-                published_at=datetime.now(), source="test", summary="Test")
-    ])
+    mock_fetcher2.fetch_and_save = AsyncMock(
+        return_value=[
+            Article(
+                title="Article 2",
+                url="http://2.com",
+                published_at=datetime.now(),
+                source="test",
+                summary="Test",
+            )
+        ]
+    )
 
     orchestrator = FetchOrchestrator(
-        fetchers=[mock_fetcher1, mock_fetcher2],
-        storage=Mock(),
-        transformer=Mock()
+        fetchers=[mock_fetcher1, mock_fetcher2], storage=Mock(), transformer=Mock()
     )
 
     articles = await orchestrator.fetch_all()

@@ -1,8 +1,10 @@
 # tests/test_news_filter_agent.py
-import pytest
-from src.agents.news_filter_agent import NewsFilterAgent
-from pathlib import Path
 import tempfile
+from pathlib import Path
+
+import pytest
+
+from src.agents.news_filter_agent import NewsFilterAgent
 
 
 @pytest.mark.asyncio
@@ -53,10 +55,10 @@ async def test_tool_usage():
 
     # Test calculator
     result = calculator("2 + 2")
-    assert result['success']
-    assert result['result'] == 4
+    assert result["success"]
+    assert result["result"] == 4
 
     # Test search
     result = web_search("AI news")
-    assert result['success']
-    assert len(result['results']) > 0
+    assert result["success"]
+    assert len(result["results"]) > 0

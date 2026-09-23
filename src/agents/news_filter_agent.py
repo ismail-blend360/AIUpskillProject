@@ -1,10 +1,11 @@
 """Agent that filters AI-relevant articles."""
-import json
-from typing import Dict, Any, List, Optional
 
-from pathlib import Path
-from src.agents.base_agent import BaseAgent
+import json
 import re
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from src.agents.base_agent import BaseAgent
 
 
 class NewsFilterAgent(BaseAgent):
@@ -19,7 +20,7 @@ class NewsFilterAgent(BaseAgent):
         self,
         model: Optional[str] = None,
         tools: Optional[List[Dict]] = None,
-        ):
+    ):
         super().__init__(
             model=model,
             tools=tools,
@@ -52,32 +53,30 @@ class NewsFilterAgent(BaseAgent):
         articles = []
 
         # Split by article separator
-        sections = content.split('---')
+        sections = content.split("---")
 
         for section in sections:
-            if '##' not in section:
+            if "##" not in section:
                 continue
 
             # Extract title (line starting with ##)
-            title_match = re.search(r'## (.+)', section)
+            title_match = re.search(r"## (.+)", section)
             if not title_match:
                 continue
 
             title = title_match.group(1).strip()
 
             # Extract URL
-            url_match = re.search(r'\*\*URL:\*\* (.+)', section)
+            url_match = re.search(r"\*\*URL:\*\* (.+)", section)
             url = url_match.group(1).strip() if url_match else ""
 
             # Extract summary (last paragraph)
-            lines = [l for l in section.split('\n') if l.strip() and not l.startswith('**')]
+            lines = [
+                l for l in section.split("\n") if l.strip() and not l.startswith("**")
+            ]
             summary = lines[-1] if lines else ""
 
-            articles.append({
-                'title': title,
-                'url': url,
-                'summary': summary
-            })
+            articles.append({"title": title, "url": url, "summary": summary})
 
         return articles
 
@@ -91,7 +90,7 @@ class NewsFilterAgent(BaseAgent):
         Returns:
             Dict with filtered articles and metadata
         """
-        articles = context['articles']
+        articles = context["articles"]
         print(f"🔍 Filtering {len(articles)} articles...")
 
         filtered = []
@@ -102,13 +101,18 @@ class NewsFilterAgent(BaseAgent):
             # Ask LLM to judge relevance
             judgment = self._judge_relevance(article)
 
-            if judgment['relevant'] and judgment['relevance_score'] >= self.relevance_threshold:
-                filtered.append({
-                    **article,
-                    'relevance_score': judgment['relevance_score'],
-                    'reasoning': judgment['reasoning'],
-                    'key_topics': judgment.get('key_topics', [])
-                })
+            if (
+                judgment["relevant"]
+                and judgment["relevance_score"] >= self.relevance_threshold
+            ):
+                filtered.append(
+                    {
+                        **article,
+                        "relevance_score": judgment["relevance_score"],
+                        "reasoning": judgment["reasoning"],
+                        "key_topics": judgment.get("key_topics", []),
+                    }
+                )
                 print(f"      ✅ Relevant (score: {judgment['relevance_score']})")
             else:
                 print(f"      ❌ Not relevant (score: {judgment['relevance_score']})")
@@ -116,9 +120,9 @@ class NewsFilterAgent(BaseAgent):
         print(f"\n📊 Filtered: {len(filtered)}/{len(articles)} articles")
 
         return {
-            'filtered_articles': filtered,
-            'total_input': len(articles),
-            'total_output': len(filtered)
+            "filtered_articles": filtered,
+            "total_input": len(articles),
+            "total_output": len(filtered),
         }
 
     def _judge_relevance(self, article: Dict) -> Dict:
@@ -159,17 +163,17 @@ class NewsFilterAgent(BaseAgent):
             # Extract JSON from response
             # LLM might wrap in ```json or similar
             json_text = response
-            if '```json' in response:
-                json_text = response.split('```json')[1].split('```')[0]
-            elif '```' in response:
-                json_text = response.split('```')[1].split('```')[0]
+            if "```json" in response:
+                json_text = response.split("```json")[1].split("```")[0]
+            elif "```" in response:
+                json_text = response.split("```")[1].split("```")[0]
 
             judgment = json.loads(json_text.strip())
 
             # Validate
-            assert 'relevant' in judgment
-            assert 'relevance_score' in judgment
-            assert 'reasoning' in judgment
+            assert "relevant" in judgment
+            assert "relevance_score" in judgment
+            assert "reasoning" in judgment
 
             return judgment
 
@@ -177,10 +181,10 @@ class NewsFilterAgent(BaseAgent):
             print(f"      ⚠️  Failed to parse LLM response: {e}")
             # Default to not relevant on error
             return {
-                'relevant': False,
-                'relevance_score': 0,
-                'reasoning': f'Failed to judge: {e}',
-                'key_topics': []
+                "relevant": False,
+                "relevance_score": 0,
+                "reasoning": f"Failed to judge: {e}",
+                "key_topics": [],
             }
 
     async def _save_result(self, result: Dict[str, Any], output_path: str):
@@ -194,13 +198,15 @@ class NewsFilterAgent(BaseAgent):
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        articles = result['filtered_articles']
+        articles = result["filtered_articles"]
 
-        with open(output_path, 'w') as f:
-            f.write(f"# Filtered AI/ML Articles\n\n")
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write("# Filtered AI/ML Articles\n\n")
             f.write(f"**Total Input:** {result['total_input']}\n")
             f.write(f"**Total Output:** {result['total_output']}\n")
-            f.write(f"**Filter Rate:** {result['total_output']/result['total_input']*100:.1f}%\n\n")
+            f.write(
+                f"**Filter Rate:** {result['total_output']/result['total_input']*100:.1f}%\n\n"
+            )
             f.write("---\n\n")
 
             for article in articles:
